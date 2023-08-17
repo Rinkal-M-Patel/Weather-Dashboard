@@ -134,14 +134,24 @@ function average(arr) {
     });
   }
   
+  
+// Function to check if a city is in the history
+function isCityInHistory(cityName) {
+    var cities = JSON.parse(localStorage.getItem('cities')) || [];
+    return cities.includes(cityName);
+  }
       
   // Form submission handler
   $("#search-form").submit(function(event) {
     event.preventDefault();
     var cityName = $("#search-input").val().trim();
     if (cityName !== "") {
-      fetchWeather(cityName);
-      $("#search-input").val(""); // Clear the input field
+        if (isCityInHistory(cityName)) {
+            alert(`${cityName} is already in the history.`);
+          } else {
+            fetchWeather(cityName);
+            $("#search-input").val(""); // Clear the input field
+          }
     }
   });
 
