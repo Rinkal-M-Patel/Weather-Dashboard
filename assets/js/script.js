@@ -13,4 +13,28 @@ $(document).ready(function() {
         });
       }
 
+      function displayWeather(cityName, currentData, forecastData) {
+        // Display current weather
+        var currentTemperature = currentData.main.temp;
+        var currentDescription = currentData.weather[0].description;
+        var currentIcon = currentData.weather[0].icon;
+        var currentWind = currentData.wind.speed;
+      var currentHumidity = currentData.main.humidity;
+    
+        var currentWeatherHTML = `
+        <div id="current-weather">
+      <h2>${cityName} (${new Date().toLocaleDateString('en-GB')})
+      <img id="current-weather-icon" src="http://openweathermap.org/img/w/${currentIcon}.png" alt="Weather Icon"></h2>
+      <ul>
+        <li>Temperature: ${currentTemperature}°C</li>
+        <li>Description: ${currentDescription}</li>
+        <li>Wind: ${currentWind} MPH</li>
+        <li>Humidity: ${currentHumidity}%</li>
+      </ul>
+    </div>
+        `;
+        $("#today").html(currentWeatherHTML);
+  
+      }
+
     });
