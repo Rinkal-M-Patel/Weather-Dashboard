@@ -11,6 +11,7 @@ $(document).ready(function() {
             clearWeatherInfo(); // Clear existing data
             displayWeather(cityName, currentData, forecastData);
             saveToLocalStorage(cityName);
+            recreateHistoryButtons();
             });
         });
       }
@@ -114,6 +115,24 @@ function average(arr) {
       localStorage.setItem('cities', JSON.stringify(cities));
     }
   }
+
+  // Function to recreate history buttons from local storage
+  function recreateHistoryButtons() {
+    var cities = JSON.parse(localStorage.getItem('cities')) || [];
+    var historyHtml = '';
+    cities.forEach(function(city) {
+      historyHtml += `
+        <button class="btn btn-secondary history-button">${city}</button>
+      `;
+    });
+    $("#history").html(historyHtml);
+
+    // Attach event listener to history buttons
+    $(".history-button").click(function() {
+      var cityName = $(this).text();
+      fetchWeather(cityName);
+    });
+  }
   
       
   // Form submission handler
@@ -126,5 +145,5 @@ function average(arr) {
     }
   });
 
-
+  recreateHistoryButtons();
     });
