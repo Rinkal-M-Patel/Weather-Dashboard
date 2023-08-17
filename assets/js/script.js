@@ -10,6 +10,7 @@ $(document).ready(function() {
           $.getJSON(forecastUrl, function(forecastData) {
             clearWeatherInfo(); // Clear existing data
             displayWeather(cityName, currentData, forecastData);
+            saveToLocalStorage(cityName);
             });
         });
       }
@@ -103,6 +104,16 @@ function average(arr) {
         $("#current-weather").remove();
         $("#forecast").empty();
       }
+
+        
+  // Function to save searched city to local storage
+  function saveToLocalStorage(cityName) {
+    var cities = JSON.parse(localStorage.getItem('cities')) || [];
+    if (!cities.includes(cityName)) {
+      cities.push(cityName);
+      localStorage.setItem('cities', JSON.stringify(cities));
+    }
+  }
   
       
   // Form submission handler
