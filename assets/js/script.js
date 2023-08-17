@@ -37,4 +37,17 @@ $(document).ready(function() {
   
       }
 
+
+      
+  // Form submission handler
+  $("#search-form").submit(function(event) {
+    event.preventDefault();
+    var cityName = $("#search-input").val().trim();
+    if (cityName !== "") {
+      fetchWeather(cityName);
+      $("#search-input").val(""); // Clear the input field
+    }
+  });
+
+
     });
