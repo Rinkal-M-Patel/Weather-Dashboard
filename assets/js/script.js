@@ -8,6 +8,7 @@ $(document).ready(function() {
     
         $.getJSON(currentWeatherUrl, function(currentData) {
           $.getJSON(forecastUrl, function(forecastData) {
+            clearWeatherInfo(); // Clear existing data
             displayWeather(cityName, currentData, forecastData);
             });
         });
@@ -98,7 +99,11 @@ function average(arr) {
   
       }
 
-
+      function clearWeatherInfo() {
+        $("#current-weather").remove();
+        $("#forecast").empty();
+      }
+  
       
   // Form submission handler
   $("#search-form").submit(function(event) {
