@@ -54,6 +54,11 @@ Developers can use this code as a starting point to create their own Weather Das
 
 
 
+## Demo
+
+https://rinkal-m-patel.github.io/Weather-Dashboard/
+
+
 ## Lessons Learned
 
 During the development of this project, I learned the following:
@@ -85,10 +90,6 @@ During the development of this project, I learned the following:
  >>Thanks to the contributors of the JavaScript community for their valuable libraries and resources.
 
 
-
-## Demo
-
-Insert gif or link to demo
 
 
 ## Run Locally
